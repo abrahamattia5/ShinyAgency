@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import Results from './pages/Results'
+import Freelances from "./pages/Freelances";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -19,6 +20,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/survey/:questionNumber" element={<Survey />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/freelances" element={<Freelances />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>
