@@ -1,12 +1,10 @@
-function App() 
+function Home() 
 {
   return (
-    <div className="App">
-      <p>
-        hello world
-      </p>
+    <div>
+      Page d'accueil 🏡
     </div>
-  );
+  )
 }
 
-export default App;
+export default Home
