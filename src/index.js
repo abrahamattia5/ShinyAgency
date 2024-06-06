@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client"; //correction de l'erreur de la console navigateur
 
 import Home from "./pages/Home";
 import Survey from "./pages/Survey";
