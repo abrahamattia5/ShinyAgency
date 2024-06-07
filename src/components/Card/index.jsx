@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import colors from '../../utils/style/colors'
 
 const CardLabel = styled.span`
   color: #5843e4;
@@ -26,7 +27,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 padding: 15px;
-background-color: #F9F9FC;
+background-color: ${colors.backgroundLight};
 border-radius: 30px;
 width: 300px;
 height: 300px;
