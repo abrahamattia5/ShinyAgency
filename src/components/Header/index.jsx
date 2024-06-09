@@ -7,19 +7,27 @@ import DarkLogo from '../../assets/dark-logo.png'
 const HomeLogo = styled.img`
   height: 70px;
 `
-
+const NavContainer = styled.nav`
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
  
 function Header() 
 {
     return (
-        <nav>
+        <NavContainer>
             <Link to="/">
                 <HomeLogo src={DarkLogo} />
             </Link>
-            <StyledLink to="/">       Accueil</StyledLink>
-            <StyledLink to="/survey/1" $isFullLink > Faire le test </StyledLink>
-            <StyledLink to="/freelances">Profils</StyledLink>
-        </nav>
+
+            <div>
+                <StyledLink to="/">       Accueil</StyledLink>
+                <StyledLink to="/survey/1" $isFullLink > Faire le test </StyledLink>
+                <StyledLink to="/freelances">Profils</StyledLink>
+            </div>
+        </NavContainer>
     )
 }
 
