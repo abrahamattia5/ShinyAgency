@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Card from "../../components/Card"
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
+import { Loader } from '../../utils/style/Atoms'
 
 
 const CardsContainer = styled.div`
@@ -26,6 +27,11 @@ const PageSubtitle = styled.h2`
   font-weight: 300;
   text-align: center;
   padding-bottom: 30px;
+`
+
+const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 function Freelances() 
@@ -77,6 +83,8 @@ function Freelances()
       <PageTitle>Trouvez votre prestataire</PageTitle>
 
       <PageSubtitle> Chez Shiny nous réunissons les meilleurs profils pour vous. </PageSubtitle>
+      
+      <LoaderWrapper>{isDataLoading && <Loader />}</LoaderWrapper>
       
       <CardsContainer>
         {freelancersList.map((profile, index) => (
