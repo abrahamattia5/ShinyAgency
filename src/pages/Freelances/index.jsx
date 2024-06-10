@@ -1,5 +1,5 @@
+import { useState, useEffect } from 'react'
 import Card from "../../components/Card"
-import DefaultPicture from '../../assets/profile.png'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 
@@ -28,6 +28,73 @@ const PageSubtitle = styled.h2`
   padding-bottom: 30px;
 `
 
+function Freelances() 
+{
+  const [isDataLoading, setDataLoading] = useState(false) //changé a avant le chargement des données et remise a False après
+  const [error, setError] = useState(false) // capture de l'erreur 
+  const [freelancersList, setFreelancesList] = useState([]) //liste des freelances vide
+
+  //chargement des données
+  useEffect(() =>
+  {
+      async function fetchFreelances() 
+      {
+          setDataLoading(true)
+
+          try 
+          {
+            //requete fetch pour récupérer les données de l'API
+            const response = await fetch(`http://localhost:8000/freelances`)
+
+            //récupération des données de l'API en JSON dans la variable surveyData
+            const { freelancersList } = await response.json()
+
+            //mise à jour de l'état de la variable surveyData
+            setFreelancesList(freelancersList)
+          } 
+          catch (err) 
+          {
+            console.log(err)
+            setError(true)
+          } 
+          finally 
+          {
+            setDataLoading(false)
+          }
+      }
+      //la fonction fetchFreelances est appelée par useEffect
+      fetchFreelances()
+  }, [])
+
+  if (error) 
+  {
+    return <span>Oups il y a eu un problème</span>
+  }
+
+
+  return (
+    <div>
+      <PageTitle>Trouvez votre prestataire</PageTitle>
+
+      <PageSubtitle> Chez Shiny nous réunissons les meilleurs profils pour vous. </PageSubtitle>
+      
+      <CardsContainer>
+        {freelancersList.map((profile, index) => (
+          <Card
+            key={`${profile.name}-${index}`}
+            label={profile.job}
+            title={profile.name }
+            picture={profile.picture}
+          />
+        ))}
+      </CardsContainer>
+    </div>
+  );
+}
+
+export default Freelances
+
+/**
 const freelanceProfiles = 
 [
     {
@@ -56,29 +123,4 @@ const freelanceProfiles =
     picture: DefaultPicture,
 },
 ]
-
-function Freelances() 
-{
-    return (
-      <div>
-        <PageTitle>Trouvez votre prestataire</PageTitle>
-
-        <PageSubtitle>
-          Chez Shiny nous réunissons les meilleurs profils pour vous.
-        </PageSubtitle>
-        
-        <CardsContainer>
-          {freelanceProfiles.map((profile, index) => (
-            <Card
-              key={`${profile.name}-${index}`}
-              label={profile.jobTitle}
-              picture={profile.picture}
-              title={profile.name }
-            />
-          ))}
-        </CardsContainer>
-      </div>
-    );
-}
-
-export default Freelances
+ */
