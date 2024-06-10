@@ -43,20 +43,67 @@ function Survey()
     const prevQuestionNumber = questionNumberInt === 1 ? 1 : questionNumberInt - 1
     const nextQuestionNumber = questionNumberInt + 1
 
-  
+    const [surveyData, setSurveyData] = useState({}) //objet JSON vide 
+    const [isDataLoading, setDataLoading] = useState(false) //changé a avant le chargement des données et remise a False après
+    const [error, setError] = useState(false) // capture de l'erreur 
+
+    //chargement des données
+    useEffect(() =>
+    {
+        async function fetchSurvey() 
+        {
+            setDataLoading(true)
+
+            try 
+            {
+                //requete fetch pour récupérer les données de l'API
+                const response = await fetch(`http://localhost:8000/survey`)
+
+                //récupération des données de l'API en JSON dans la variable surveyData
+                const { surveyData } = await response.json()
+
+                //mise à jour de l'état de la variable surveyData
+                setSurveyData(surveyData)
+            } 
+            catch (err) 
+            {
+                console.log(err)
+                setError(true)
+            } 
+            finally 
+            {
+                setDataLoading(false)
+            }
+        }
+        //la fonction fetchSurvey est appelée par useEffect
+        fetchSurvey()
+    }, [])
+
+    if (error) 
+    {
+        return <span>Oups il y a eu un problème</span>
+    }
 
     return (
         <SurveyContainer>
             <QuestionTitle>Question {questionNumber}</QuestionTitle>
 
-            <QuestionContent>contrenue de la question</QuestionContent>
-
+            {isDataLoading ? 
+            (
+                <p>Chargement...</p>
+            ) : 
+            (
+                <QuestionContent>{surveyData[questionNumber]}</QuestionContent>
+            )}
             <LinkWrapper>
                 <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link>
-                {[questionNumberInt + 1] ? (
-                <Link to={`/survey/${nextQuestionNumber}`}>Suivant</Link>
-                ) : (
-                <Link to="/results">Résultats</Link>
+
+                {surveyData[questionNumberInt + 1] ? 
+                (
+                    <Link to={`/survey/${nextQuestionNumber}`}>Suivant</Link>
+                ) : 
+                (
+                    <Link to="/results">Résultats</Link>
                 )}
             </LinkWrapper>
         </SurveyContainer>
