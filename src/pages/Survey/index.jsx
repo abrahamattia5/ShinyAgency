@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
+import { Loader } from '../../utils/style/Atoms'
 
 
 const SurveyContainer = styled.div
@@ -90,7 +91,7 @@ function Survey()
 
             {isDataLoading ? 
             (
-                <p>Chargement...</p>
+                <Loader /> //affiche l'icon de chargement tant que les données ne sont pas chargées
             ) : 
             (
                 <QuestionContent>{surveyData[questionNumber]}</QuestionContent>
