@@ -9,6 +9,7 @@ import Freelances from "./pages/Freelances";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Error from "./components/Error";
+import Footer from "./components/Footer";
 
 import { createGlobalStyle } from 'styled-components'
 
@@ -37,6 +38,8 @@ root.render(
         <Route path="/freelances" element={<Freelances />} />
         <Route path="*" element={<Error />} />
       </Routes>
+      <Footer />
+
     </Router>
   </React.StrictMode>
 );
