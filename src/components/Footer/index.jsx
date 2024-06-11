@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 
+import { useContext } from 'react'
+import { ThemeContext } from '../../utils/context'
+
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: row;
@@ -12,20 +15,24 @@ const FooterContainer = styled.footer`
 
 const NightModeButton = styled.button`
   background-color: transparent;
-  border: none;
+  border: 1px solid ${colors.secondary};
+  padding: 10px 20px;
   cursor: pointer;
   color: ${colors.secondary};
 `
 
 function Footer() 
 {
-  return (
-    <FooterContainer>
-      <NightModeButton onClick={() =>{}}>
-        Changer de mode : 
-      </NightModeButton>
-    </FooterContainer>
-  )
+    const { toggleTheme, theme } = useContext(ThemeContext)
+
+    //ajout de la fonction toggleTheme pour changer le thème au clic sur le bouton
+    return (
+        <FooterContainer>
+            <NightModeButton onClick={ () =>toggleTheme() }>
+                Changer de mode :  {theme === 'light' ? '☀️' : '🌙'}
+            </NightModeButton>
+        </FooterContainer>
+    )
 }
 
 export default Footer

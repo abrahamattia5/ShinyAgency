@@ -11,19 +11,10 @@ import Header from "./components/Header";
 import Error from "./components/Error";
 import Footer from "./components/Footer";
 
-import { createGlobalStyle } from 'styled-components'
+import GlobalStyle from './utils/style/GlobalStyle'
 import { ThemeProvider } from './utils/context'
 
-const GlobalStyle = createGlobalStyle`
-    * {
-      font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    }
 
-    body 
-    {
-      margin: 0;
-    }
-`
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

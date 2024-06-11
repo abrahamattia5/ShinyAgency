@@ -15,6 +15,7 @@ export const ThemeProvider = ({ children }) =>
     }
 
     return (
+        //fourniture du contexte grace à la méthode Provider de ThemeContext avec les valeurs theme et toggleTheme 
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
         {children}
         </ThemeContext.Provider>
