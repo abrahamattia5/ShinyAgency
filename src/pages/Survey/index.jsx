@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 
+import { useContext } from 'react'
+import { SurveyContext } from '../../utils/context'
+
 
 const SurveyContainer = styled.div
 `
@@ -75,6 +78,13 @@ function Survey()
     const [isDataLoading, setDataLoading] = useState(false) //changé a avant le chargement des données et remise a False après
     const [error, setError] = useState(false) // capture de l'erreur 
 
+    const { saveAnswers, answers } = useContext(SurveyContext)
+
+    function saveReply(answer) 
+    {
+        saveAnswers({ [questionNumber]: answer })
+    }
+
     //chargement des données
     useEffect(() =>
     {
@@ -127,13 +137,15 @@ function Survey()
 
             <ReplyWrapper>
                 <ReplyBox
-                    onClick={() => {}}
+                    onClick={() => saveReply(true)}
+                    isSelected={answers[questionNumber] === true}
                 >
                     Oui
                 </ReplyBox>
-                
+
                 <ReplyBox
-                    onClick={() => {}}
+                    onClick={() => saveReply(false)}
+                    isSelected={answers[questionNumber] === false}
                 >
                     Non
                 </ReplyBox>
