@@ -85,6 +85,7 @@ function Survey()
     }
 
     const { data, isLoading, error } = useFetch(`http://localhost:8000/survey`)
+    //récupération des données de l'enquête Survey
     const surveyData = data?.surveyData
     //chargement des données
 
@@ -125,8 +126,10 @@ function Survey()
 
             <LinkWrapper>
                 <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link>
-
-                {surveyData[questionNumberInt + 1] ? 
+                {
+                //a l'initialisation la data est un objet vide ce que provoque une erreur 
+                //surveyData -> verifi si la data est charger && surveyData[questionNumberInt + 1] -> verifi si la question suivante existe
+                surveyData && surveyData[questionNumberInt + 1] ? 
                 (
                     <Link to={`/survey/${nextQuestionNumber}`}>Suivant</Link>
                 ) : 
