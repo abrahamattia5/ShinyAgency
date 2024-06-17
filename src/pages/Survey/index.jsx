@@ -8,6 +8,8 @@ import { Loader } from '../../utils/style/Atoms'
 import { useContext } from 'react'
 import { SurveyContext } from '../../utils/context'
 
+import { useFetch } from '../../utils/hooks'
+
 
 const SurveyContainer = styled.div
 `
@@ -74,9 +76,6 @@ function Survey()
     const prevQuestionNumber = questionNumberInt === 1 ? 1 : questionNumberInt - 1
     const nextQuestionNumber = questionNumberInt + 1
 
-    const [surveyData, setSurveyData] = useState({}) //objet JSON vide 
-    const [isDataLoading, setDataLoading] = useState(false) //changé a avant le chargement des données et remise a False après
-    const [error, setError] = useState(false) // capture de l'erreur 
 
     const { saveAnswers, answers } = useContext(SurveyContext)
 
@@ -85,37 +84,9 @@ function Survey()
         saveAnswers({ [questionNumber]: answer })
     }
 
+    const { data, isLoading, error } = useFetch(`http://localhost:8000/survey`)
+    const surveyData = data?.surveyData
     //chargement des données
-    useEffect(() =>
-    {
-        async function fetchSurvey() 
-        {
-            setDataLoading(true)
-
-            try 
-            {
-                //requete fetch pour récupérer les données de l'API
-                const response = await fetch(`http://localhost:8000/survey`)
-
-                //récupération des données de l'API en JSON dans la variable surveyData
-                const { surveyData } = await response.json()
-
-                //mise à jour de l'état de la variable surveyData
-                setSurveyData(surveyData)
-            } 
-            catch (err) 
-            {
-                console.log(err)
-                setError(true)
-            } 
-            finally 
-            {
-                setDataLoading(false)
-            }
-        }
-        //la fonction fetchSurvey est appelée par useEffect
-        fetchSurvey()
-    }, [])
 
     if (error) 
     {
@@ -126,7 +97,7 @@ function Survey()
         <SurveyContainer>
             <QuestionTitle>Question {questionNumber}</QuestionTitle>
 
-            {isDataLoading ? 
+            {isLoading ? 
             (
                 <Loader /> //affiche l'icon de chargement tant que les données ne sont pas chargées
             ) : 
