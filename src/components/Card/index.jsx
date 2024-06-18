@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
+import { useTheme } from '../../utils/hooks'
 
 const CardLabel = styled.span`
-  color: #5843e4;
+  color: ${({ theme }) => (theme === 'light' ? colors.primary : '#ffffff')};
   font-size: 22px;
   font-weight: normal;
   padding-left: 15px;
 `
 
 const CardTitle = styled.span`
-  color: black;
+  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
   font-size: 22px;
   font-weight: normal;
   align-self: center;
@@ -27,7 +28,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 padding: 15px;
-background-color: ${colors.backgroundLight};
+background-color: ${({ theme }) => theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
 border-radius: 30px;
 width: 300px;
 height: 300px;
@@ -41,11 +42,13 @@ transition: 200ms;
 
 function Card({ label, title, picture }) 
 {
+  const { theme } = useTheme()
+
     return (
-      <CardWrapper>
-        <CardLabel>{label}</CardLabel>
+      <CardWrapper theme={theme} >
+        <CardLabel theme={theme} >{label}</CardLabel>
         <CardImage src={picture} alt="freelance" />
-        <CardTitle>{title}</CardTitle>
+        <CardTitle theme={theme} >{title}</CardTitle>
       </CardWrapper>
     )
 }
