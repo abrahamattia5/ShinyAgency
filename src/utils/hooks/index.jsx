@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { ThemeContext } from '../context'
 
 
 export function useFetch(url) 
@@ -33,4 +34,10 @@ export function useFetch(url)
     }, [url])
     //[url] permet de dire à useEffect de ne pas s'exécuter si l'url ne change pas
     return { isLoading, data, error }
+}
+
+export function useTheme() 
+{
+    const { theme, toggleTheme } = useContext(ThemeContext)
+    return { theme, toggleTheme }
 }
