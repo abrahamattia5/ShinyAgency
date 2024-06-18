@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
 import Card from "../../components/Card"
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
+import { useFetch } from '../../utils/hooks'
 
 
 const CardsContainer = styled.div`
@@ -36,41 +36,12 @@ const LoaderWrapper = styled.div`
 
 function Freelances() 
 {
-  const [isDataLoading, setDataLoading] = useState(false) //changé a avant le chargement des données et remise a False après
-  const [error, setError] = useState(false) // capture de l'erreur 
-  const [freelancersList, setFreelancesList] = useState([]) //liste des freelances vide
+  
+  const { data, isLoading, error } = useFetch(`http://localhost:8000/freelances`)
 
-  //chargement des données
-  useEffect(() =>
-  {
-      async function fetchFreelances() 
-      {
-          setDataLoading(true)
-
-          try 
-          {
-            //requete fetch pour récupérer les données de l'API
-            const response = await fetch(`http://localhost:8000/freelances`)
-
-            //récupération des données de l'API en JSON dans la variable surveyData
-            const { freelancersList } = await response.json()
-
-            //mise à jour de l'état de la variable surveyData
-            setFreelancesList(freelancersList)
-          } 
-          catch (err) 
-          {
-            console.log(err)
-            setError(true)
-          } 
-          finally 
-          {
-            setDataLoading(false)
-          }
-      }
-      //la fonction fetchFreelances est appelée par useEffect
-      fetchFreelances()
-  }, [])
+  // "?" permet de s'assurer que data existe bien.
+  // plus d'info sur cette notation : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  const freelancersList = data?.freelancersList
 
   if (error) 
   {
@@ -84,18 +55,27 @@ function Freelances()
 
       <PageSubtitle> Chez Shiny nous réunissons les meilleurs profils pour vous. </PageSubtitle>
       
-      <LoaderWrapper>{isDataLoading && <Loader />}</LoaderWrapper>
-      
-      <CardsContainer>
-        {freelancersList.map((profile, index) => (
-          <Card
-            key={`${profile.name}-${index}`}
-            label={profile.job}
-            title={profile.name }
-            picture={profile.picture}
-          />
-        ))}
-      </CardsContainer>
+      {
+      isLoading ? 
+      (
+        <LoaderWrapper>
+          <Loader  />
+        </LoaderWrapper>
+      ) 
+      : 
+      (
+        <CardsContainer>
+          {freelancersList.map((profile, index) => 
+          (
+            <Card
+              key={`${profile.name}-${index}`}
+              label={profile.job}
+              title={profile.name}
+              picture={profile.picture}
+            />
+          ))}
+        </CardsContainer>
+      )}
     </div>
   );
 }
