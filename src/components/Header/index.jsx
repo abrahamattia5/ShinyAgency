@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import {StyledLink} from '../../utils/style/Atoms'
 
+import { useTheme } from '../../utils/hooks'
+import LightLogo from '../../assets/light-logo.png'
 import DarkLogo from '../../assets/dark-logo.png'
 
 const HomeLogo = styled.img`
@@ -16,16 +18,18 @@ const NavContainer = styled.nav`
  
 function Header() 
 {
+    const { theme } = useTheme()
+
     return (
         <NavContainer>
             <Link to="/">
-                <HomeLogo src={DarkLogo} />
+                <HomeLogo src={theme === 'light' ? DarkLogo : LightLogo} />
             </Link>
 
             <div>
-                <StyledLink to="/"> Acceuil</StyledLink>
+                <StyledLink $theme={theme} to="/"> Acceuil</StyledLink>
+                <StyledLink $theme={theme} to="/freelances">Profils</StyledLink>
                 <StyledLink to="/survey/1" $isFullLink > Faire le test </StyledLink>
-                <StyledLink to="/freelances">Profils</StyledLink>
             </div>
         </NavContainer>
     )
