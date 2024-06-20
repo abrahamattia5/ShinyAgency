@@ -1,4 +1,4 @@
-import { formatJobList } from './'
+import { formatJobList, formatQueryParams } from './'
 
 describe('The formatJobList function', () => 
 {
@@ -14,5 +14,21 @@ describe('The formatJobList function', () =>
     const expectedState = 'item3'
     //3 est la longueur de la liste, 2 est l'index de l'élément
     expect(formatJobList('item3', 3, 2)).toEqual(expectedState)
+  })
+})
+
+
+describe('The formatQueryParams function', () => 
+{
+  it('should use the right format for param', () => 
+  {
+    const expectedState = 'a1=answer1'
+    expect(formatQueryParams({ 1: 'answer1' })).toEqual(expectedState)
+  })
+
+  it('should concatenate params with an &', () => 
+  {
+    const expectedState = 'a1=answer1&a2=answer2'
+    expect(formatQueryParams({ 1: 'answer1', 2: 'answer2' })).toEqual(expectedState)
   })
 })
