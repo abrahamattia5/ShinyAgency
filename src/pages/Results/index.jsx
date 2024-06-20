@@ -65,6 +65,19 @@ function formatFetchParams(answers)
     return `${previousParams}${separator}a${answerNumber}=${answers[answerNumber]}`
   }, '')
 }
+ 
+// retourne le titre sans virgule si c'est le dernier élément de la liste, sinon retourne le titre avec une virgule
+export function formatJobList(title, listLength, index)
+{
+  if (index === listLength - 1) 
+  {
+    return title
+  } 
+  else 
+  {
+    return `${title},`
+  }
+}
 
 function Results() 
 {
@@ -99,8 +112,9 @@ function Results()
               key={`result-title-${index}-${result.title}`}
               theme={theme}
             >
-              {result.title}
-              {index === resultsData.length - 1 ? '' : ','}
+
+              {formatJobList(result.title, resultsData.length, index)}
+
             </JobTitle>
           ))}
       </ResultsTitle>
