@@ -1,19 +1,22 @@
 # Getting Started with Create React App
 
-voici le lien pour installer l'api en local afin de faire marcher le projet : les instructions sont dans le read me du depos de l'api :
+
+here is the link to install the api locally in order to run the project: the instructions are in the readme of the api repository:
 https://github.com/OpenClassrooms-Student-Center/7150606-API-React-intermediaire
 
-1. Clonez le dépôt :
+
+1. Clone the repository
 
     ```bash
     git clone https://github.com/abrahamattia5/ShinyAgency.git
-    cd votre-projet
     ```
-2 placez vous dans le dossier projet 
+
+2. go to the project folder
     ```bash
     cd votre-projet
     ```
-3. Installez les dépendances :
+    
+3. Install dependencies:
 
   ```bash
   yarn install
@@ -23,7 +26,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Pour lancer le serveur de développement et voir votre application en action, utilisez la commande suivante :
+To launch the development server and see your application in action, use the following command:
 
 ### `yarn start`
 
