@@ -8,7 +8,10 @@ const CardLabel = styled.span`
   color: ${({ theme }) => (theme === 'light' ? colors.primary : '#ffffff')};
   font-size: 22px;
   font-weight: normal;
-  padding-left: 15px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  
 `
 
 const CardTitle = styled.span`
@@ -16,6 +19,22 @@ const CardTitle = styled.span`
   font-size: 22px;
   font-weight: normal;
   align-self: center;
+  display: flex;
+  align-items: center;
+`
+
+const CardStar = styled.span`
+  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
+  font-size: 22px;
+  font-weight: normal;
+  align-self: center;
+
+  cursor: pointer;
+  margin-left: 20px;
+  transition: transform 0.4s;
+  &:hover {
+    transform: scale(1.3); 
+  }
 `
 
 const CardImage = styled.img`
@@ -53,7 +72,14 @@ function Card({ label, title, picture })
         <CardImage src={picture} alt="freelance" />
         <CardTitle theme={theme} >
           {title} 
-          <span onClick={() => setIsFavorite(!isFavorite)} > {star} </span>
+
+          <CardStar 
+            theme={theme} 
+            onClick={() => setIsFavorite(!isFavorite)} 
+          > 
+            {star} 
+          </CardStar>
+
         </CardTitle>
       </CardWrapper>
     )
