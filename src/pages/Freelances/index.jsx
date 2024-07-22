@@ -36,6 +36,10 @@ const LoaderWrapper = styled.div`
   justify-content: center;
 `
 
+const LinkStyle = styled(Link)`
+  text-decoration: none;
+`
+
 function Freelances() 
 {
   const { theme } = useTheme()
@@ -70,14 +74,14 @@ function Freelances()
         <CardsContainer>
           {freelancersList.map((profile, index) => 
           (
-            <Link key={`freelance-${profile.id}`} to={`/profile/${profile.id}`}>
+            <LinkStyle key={`freelance-${profile.id}`} to={`/profile/${profile.id}`}>
               <Card
                 key={`${profile.name}-${index}`}
                 label={profile.job}
                 title={profile.name}
                 picture={profile.picture}
               />
-            </Link>
+            </LinkStyle>
           ))}
         </CardsContainer>
       )}
