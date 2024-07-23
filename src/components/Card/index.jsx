@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { useTheme } from '../../utils/hooks'
-import { useState } from 'react'
 
 const CardLabel = styled.span`
   color: ${({ theme }) => (theme === 'light' ? colors.primary : '#ffffff')};
@@ -60,18 +59,18 @@ transition: 200ms;
 `
 
 
-function Card({ label, title, picture }) 
+function Card({ id, label, title, picture, isFavorite, onFavoriteToggle }) 
 {
   const { theme } = useTheme()
-  const [isFavorite, setIsFavorite] = useState(false)
-  const star = isFavorite ? '⭐️' : '☆'
-
+  
   const handleStarClick = (event) => 
   {
     event.stopPropagation()
     event.preventDefault()
-    setIsFavorite(!isFavorite)
+    onFavoriteToggle(id)
   }
+
+  const star = isFavorite ? '⭐️' : '☆'
 
     return (
       <CardWrapper theme={theme}  >

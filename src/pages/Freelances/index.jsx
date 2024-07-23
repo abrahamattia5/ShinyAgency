@@ -4,6 +4,7 @@ import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 import { useFetch, useTheme } from '../../utils/hooks'
 import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 
 
 const CardsContainer = styled.div`
@@ -50,6 +51,22 @@ function Freelances()
   // plus d'info sur cette notation : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Optional_chaining
   const freelancersList = data?.freelancersList
 
+  const [favorites, setFavorites] = useState({})
+
+  useEffect(() => 
+  {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {}
+    setFavorites(storedFavorites)
+  }, [])
+
+  const handleFavoriteToggle = (id) => {
+    setFavorites((prevFavorites) => {
+      const newFavorites = { ...prevFavorites, [id]: !prevFavorites[id] }
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
+      return newFavorites
+    })
+  }
+
   if (error) 
   {
     return <span>Oups il y a eu un problème</span>
@@ -80,6 +97,8 @@ function Freelances()
                 label={profile.job}
                 title={profile.name}
                 picture={profile.picture}
+                isFavorite={!!favorites[profile.id]}
+                onFavoriteToggle={() => handleFavoriteToggle(profile.id)}
               />
             </LinkStyle>
           ))}
