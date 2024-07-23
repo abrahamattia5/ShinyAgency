@@ -66,6 +66,13 @@ function Card({ label, title, picture })
   const [isFavorite, setIsFavorite] = useState(false)
   const star = isFavorite ? '⭐️' : '☆'
 
+  const handleStarClick = (event) => 
+  {
+    event.stopPropagation()
+    event.preventDefault()
+    setIsFavorite(!isFavorite)
+  }
+
     return (
       <CardWrapper theme={theme}  >
         <CardLabel theme={theme} >{label}</CardLabel>
@@ -75,7 +82,7 @@ function Card({ label, title, picture })
 
           <CardStar 
             theme={theme} 
-            onClick={() => setIsFavorite(!isFavorite)} 
+            onClick={handleStarClick} 
           > 
             {star} 
           </CardStar>
