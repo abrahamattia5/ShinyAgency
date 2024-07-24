@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 import { useFetch, useTheme } from '../../utils/hooks'
+import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 
 
 const CardsContainer = styled.div`
@@ -35,6 +37,10 @@ const LoaderWrapper = styled.div`
   justify-content: center;
 `
 
+const LinkStyle = styled(Link)`
+  text-decoration: none;
+`
+
 function Freelances() 
 {
   const { theme } = useTheme()
@@ -44,6 +50,22 @@ function Freelances()
   // "?" permet de s'assurer que data existe bien.
   // plus d'info sur cette notation : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Optional_chaining
   const freelancersList = data?.freelancersList
+
+  const [favorites, setFavorites] = useState({})
+
+  useEffect(() => 
+  {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {}
+    setFavorites(storedFavorites)
+  }, [])
+
+  const handleFavoriteToggle = (id) => {
+    setFavorites((prevFavorites) => {
+      const newFavorites = { ...prevFavorites, [id]: !prevFavorites[id] }
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
+      return newFavorites
+    })
+  }
 
   if (error) 
   {
@@ -61,7 +83,7 @@ function Freelances()
       isLoading ? 
       (
         <LoaderWrapper>
-          <Loader theme={theme}  />
+          <Loader theme={theme} data-testid="loader" />
         </LoaderWrapper>
       ) 
       : 
@@ -69,12 +91,16 @@ function Freelances()
         <CardsContainer>
           {freelancersList.map((profile, index) => 
           (
-            <Card
-              key={`${profile.name}-${index}`}
-              label={profile.job}
-              title={profile.name}
-              picture={profile.picture}
-            />
+            <LinkStyle key={`freelance-${profile.id}`} to={`/profile/${profile.id}`}>
+              <Card
+                key={`${profile.name}-${index}`}
+                label={profile.job}
+                title={profile.name}
+                picture={profile.picture}
+                isFavorite={!!favorites[profile.id]}
+                onFavoriteToggle={() => handleFavoriteToggle(profile.id)}
+              />
+            </LinkStyle>
           ))}
         </CardsContainer>
       )}
