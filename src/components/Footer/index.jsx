@@ -48,6 +48,18 @@ const SocialIcon = styled.a`
     color: ${colors.primary};
   }
 `
+const NightModeColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`
+
+const NightModeTitle = styled.h3`
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+`
 
 const NightModeButton = styled.button`
   background-color: transparent;
@@ -92,7 +104,7 @@ function Footer() {
       }
       <Column>
         <SocialsTitle>Suivez-nous sur : </SocialsTitle> 
-        
+
         <SocialMediaIcons> 
             
           <SocialIcon href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
@@ -110,12 +122,18 @@ function Footer() {
         </SocialMediaIcons>
       </Column>
 
+
       {/* Second Column: Theme Toggle Button */}
-      <Column>
+      <NightModeColumn>
+
+        <NightModeTitle>
+          {theme === 'light' ? 'Passez au thème sombre' : 'Passez au thème clair'}
+        </NightModeTitle>
+
         <NightModeButton onClick={toggleTheme}>
-          Changer de mode : {theme === 'light' ? '☀️' : '🌙'}
+          {theme ==='light' ? 'Activer le mode sombre 🌙' : 'Activer le mode clair ☀️'}
         </NightModeButton>
-      </Column>
+      </NightModeColumn>
 
       {/* Third Column: Legal Links */}
       <LegalColumn>
