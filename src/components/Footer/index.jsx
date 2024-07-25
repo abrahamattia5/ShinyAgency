@@ -26,6 +26,12 @@ const Column = styled.div
   flex-direction: column;
   align-items: center;
 `
+const SocialsTitle = styled.h3
+`
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+`
 
 const SocialMediaIcons = styled.div
 `
@@ -85,7 +91,8 @@ function Footer() {
       // href sert à indiquer l'adresse du lien, target="_blank" ouvre le lien dans un nouvel onglet, rel="noopener noreferrer" est une sécurité pour éviter les attaques de type "phishing"
       }
       <Column>
-        <p>Retrouvez-nous sur :</p>
+        <SocialsTitle>Suivez-nous sur : </SocialsTitle> 
+        
         <SocialMediaIcons> 
             
           <SocialIcon href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
@@ -128,7 +135,7 @@ function Footer() {
         </LegalLink>
 
       </LegalColumn>
-      
+
     </FooterContainer>
   )
 }
