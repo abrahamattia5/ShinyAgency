@@ -144,7 +144,7 @@ function Footer() {
           Mentions légales
         </LegalLink>
 
-        <LegalLink theme={theme} to="/politique-confidentialite">
+        <LegalLink theme={theme} to="/politique-de-confidentialite">
           Politique de confidentialité
         </LegalLink>
 
