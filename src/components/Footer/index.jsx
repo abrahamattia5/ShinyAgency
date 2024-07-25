@@ -51,10 +51,23 @@ const NightModeButton = styled.button`
   color: ${colors.secondary};
 `
 
+const LegalColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+const LegalTitle = styled.h3`
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+`
+
 const LegalLink = styled(Link)`
   color: ${({ theme }) => theme === 'light' ? colors.dark : 'white'};
   text-decoration: none;
   font-size: 14px;
+  margin-bottom: 5px;
 
   &:hover {
     text-decoration: underline;
@@ -72,7 +85,7 @@ function Footer() {
       // href sert à indiquer l'adresse du lien, target="_blank" ouvre le lien dans un nouvel onglet, rel="noopener noreferrer" est une sécurité pour éviter les attaques de type "phishing"
       }
       <Column>
-      <p>Retrouvez-nous sur  :</p>
+        <p>Retrouvez-nous sur :</p>
         <SocialMediaIcons> 
             
           <SocialIcon href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
@@ -97,12 +110,25 @@ function Footer() {
         </NightModeButton>
       </Column>
 
-      {/* Third Column: Legal Link */}
-      <Column>
-        <LegalLink theme={theme} to="/conditionsLegales">
-          Conditions légales
+      {/* Third Column: Legal Links */}
+      <LegalColumn>
+
+        <LegalTitle>Informations légales</LegalTitle>
+
+        <LegalLink theme={theme} to="/mentions-legales">
+          Mentions légales
         </LegalLink>
-      </Column>
+
+        <LegalLink theme={theme} to="/politique-confidentialite">
+          Politique de confidentialité
+        </LegalLink>
+
+        <LegalLink theme={theme} to="/conditions-utilisation">
+          Conditions Générales d'Utilisation
+        </LegalLink>
+
+      </LegalColumn>
+      
     </FooterContainer>
   )
 }
