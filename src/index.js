@@ -16,6 +16,7 @@ import GlobalStyle from './utils/style/GlobalStyle'
 import { ThemeProvider, SurveyProvider } from './utils/context'
 
 import MentionsLegales from "./pages/MentionsLegales";
+import PolitiqueDeConfidentialite from "./pages/PolitiqueDeConfidentialite";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -33,6 +34,7 @@ root.render(
             <Route path="/freelances" element={<Freelances />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/politique-de-confidentialite" element={<PolitiqueDeConfidentialite />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
