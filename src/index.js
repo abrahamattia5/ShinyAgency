@@ -15,7 +15,7 @@ import Footer from "./components/Footer";
 import GlobalStyle from './utils/style/GlobalStyle'
 import { ThemeProvider, SurveyProvider } from './utils/context'
 
-
+import MentionsLegales from "./pages/MentionsLegales";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -32,6 +32,7 @@ root.render(
             <Route path="/results" element={<Results />} />
             <Route path="/freelances" element={<Freelances />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
