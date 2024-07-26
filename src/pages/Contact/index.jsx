@@ -14,18 +14,6 @@ const Title = styled.h1`
   color: ${({ theme }) => (theme === 'light' ? colors.primary : 'white')};
 `;
 
-const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
-  margin: 0 auto;
-  border-radius: 15px;
-  gap: 15px;
-  margin-bottom: 30px;
-  background-color: ${({ theme }) => (theme === 'light' ? '#F1F1F1' : colors.dark)};
-  padding: 20px;
-`;
 
 const Input = styled.input`
   padding: 10px;
