@@ -110,7 +110,7 @@ function Contact()
           </FormContainer>
 
           <Section>
-            <SectionTitle theme={theme}>Adresse</SectionTitle>
+            <SectionTitle theme={theme}>📍 Adresse</SectionTitle>
             <Content theme={theme}>
               1234 Rue Fictive<br />
               75001 Paris<br />
@@ -119,21 +119,21 @@ function Contact()
           </Section>
 
           <Section>
-            <SectionTitle theme={theme}>Email</SectionTitle>
+            <SectionTitle theme={theme}> 📧 Email</SectionTitle>
             <Content theme={theme}>
-              contact@agencefictive.com
+                contact@agencefictive.com
             </Content>
           </Section>
 
           <Section>
-            <SectionTitle theme={theme}>Téléphone</SectionTitle>
+            <SectionTitle theme={theme}>📞 Téléphone</SectionTitle>
             <Content theme={theme}>
-              +33 1 23 45 67 89
+                01 23 45 67 89
             </Content>
           </Section>
 
           <Section>
-            <SectionTitle theme={theme}>Suivez-nous sur les réseaux sociaux</SectionTitle>
+            <SectionTitle theme={theme}>🌐 Réseaux sociaux</SectionTitle>
             <SocialMediaIcons>
               <SocialIcon href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                 <img src={facebookIcon} alt="Facebook" />
