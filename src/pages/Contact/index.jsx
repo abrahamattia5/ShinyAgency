@@ -64,10 +64,23 @@ const SectionTitle = styled.h2`
   border-bottom: 1px solid ${({ theme }) => (theme === 'light' ? colors.primary : 'white')};
 `;
 
+const ContactInfoSection = styled(Section)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${({ theme }) => (theme === 'light' ? '#F1F1F1' : colors.dark)};
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+`;
+
 const Content = styled.p`
   font-size: 16px;
   line-height: 1.6;
   color: ${({ theme }) => (theme === 'light' ? colors.dark : 'white')};
+  text-align: center;
 `;
 
 
@@ -103,20 +116,11 @@ function Contact()
             </Content>
           </Section>
 
-          <Section>
-            <SectionTitle theme={theme}> 📧 Email</SectionTitle>
-            <Content theme={theme}>
-                contact@agencefictive.com
-            </Content>
-          </Section>
-
-          <Section>
-            <SectionTitle theme={theme}>📞 Téléphone</SectionTitle>
-            <Content theme={theme}>
-                01 23 45 67 89
-            </Content>
-          </Section>
-
+          <ContactInfoSection theme={theme}>
+            <SectionTitle theme={theme}>Téléphone & Email</SectionTitle>
+            <Content theme={theme}> 📞 01 23 45 67 89</Content>
+            <Content theme={theme}> 📧 contact@agencefictive.com</Content>
+          </ContactInfoSection>
         </ContactContainer>
       )}
     </ThemeContext.Consumer>
