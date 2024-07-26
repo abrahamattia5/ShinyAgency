@@ -6,6 +6,7 @@ import Survey from "./pages/Survey";
 import Results from './pages/Results'
 import Freelances from "./pages/Freelances";
 import Profile from "./pages/Profile";
+import Contact from "./pages/Contact";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -31,6 +32,7 @@ root.render(
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/survey/:questionNumber" element={<Survey />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/results" element={<Results />} />
             <Route path="/freelances" element={<Freelances />} />
             <Route path="/profile/:id" element={<Profile />} />
