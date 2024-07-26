@@ -12,6 +12,10 @@ const ContactContainer = styled.div`
 
 const Title = styled.h1`
   color: ${({ theme }) => (theme === 'light' ? colors.primary : 'white')};
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid ${({ theme }) => (theme === 'light' ? colors.primary : 'white')};
 `;
 
 
@@ -87,7 +91,7 @@ function Contact()
     <ThemeContext.Consumer>
       {({ theme }) => (
         <ContactContainer theme={theme}>
-          <Title theme={theme}>Contactez-nous</Title>
+          <Title theme={theme}>Contactez-nous !</Title>
 
           <ContactInfoSection theme={theme} onSubmit={handleSubmit}>
             <Input theme={theme} type="text" placeholder="Nom" required />
@@ -99,13 +103,13 @@ function Contact()
 
 
           <ContactInfoSection theme={theme}>
-            <SectionTitle theme={theme}>Téléphone & Email</SectionTitle>
+            <SectionTitle theme={theme}>Téléphone & Email : </SectionTitle>
             <Content theme={theme}> 📞 01 23 45 67 89</Content>
             <Content theme={theme}> 📧 contact@agencefictive.com</Content>
           </ContactInfoSection>
 
           <ContactInfoSection theme={theme}>
-            <SectionTitle theme={theme}> Adresse </SectionTitle>
+            <SectionTitle theme={theme}> Adresse : </SectionTitle>
             <Content theme={theme}>
               55 Rue Fictive<br />
               75001 Paris<br />
