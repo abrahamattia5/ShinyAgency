@@ -107,20 +107,22 @@ function Contact()
             <SubmitButton type="submit">Envoyer</SubmitButton>
           </FormContainer>
 
-          <Section>
-            <SectionTitle theme={theme}>📍 Adresse</SectionTitle>
-            <Content theme={theme}>
-              1234 Rue Fictive<br />
-              75001 Paris<br />
-              France
-            </Content>
-          </Section>
 
           <ContactInfoSection theme={theme}>
             <SectionTitle theme={theme}>Téléphone & Email</SectionTitle>
             <Content theme={theme}> 📞 01 23 45 67 89</Content>
             <Content theme={theme}> 📧 contact@agencefictive.com</Content>
           </ContactInfoSection>
+
+          <ContactInfoSection theme={theme}>
+            <SectionTitle theme={theme}> Adresse </SectionTitle>
+            <Content theme={theme}>
+              55 Rue Fictive<br />
+              75001 Paris<br />
+              France
+            </Content>
+          </ContactInfoSection>
+
         </ContactContainer>
       )}
     </ThemeContext.Consumer>
