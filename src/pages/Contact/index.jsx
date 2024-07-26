@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import colors from '../../utils/style/colors';
 import { ThemeContext } from '../../utils/context';
 
-import facebookIcon from '../../assets/icons/facebook.png';
-import linkedinIcon from '../../assets/icons/linkedin.png';
-import whatsappIcon from '../../assets/icons/whatsapp.png';
 
 const ContactContainer = styled.div`
   padding: 20px;
@@ -73,18 +70,6 @@ const Content = styled.p`
   color: ${({ theme }) => (theme === 'light' ? colors.dark : 'white')};
 `;
 
-const SocialMediaIcons = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-`;
-
-const SocialIcon = styled.a`
-  img {
-    width: 32px;
-    height: 32px;
-  }
-`;
 
 function Contact() 
 {
@@ -132,20 +117,6 @@ function Contact()
             </Content>
           </Section>
 
-          <Section>
-            <SectionTitle theme={theme}>🌐 Réseaux sociaux</SectionTitle>
-            <SocialMediaIcons>
-              <SocialIcon href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src={facebookIcon} alt="Facebook" />
-              </SocialIcon>
-              <SocialIcon href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                <img src={linkedinIcon} alt="LinkedIn" />
-              </SocialIcon>
-              <SocialIcon href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer">
-                <img src={whatsappIcon} alt="WhatsApp" />
-              </SocialIcon>
-            </SocialMediaIcons>
-          </Section>
         </ContactContainer>
       )}
     </ThemeContext.Consumer>
