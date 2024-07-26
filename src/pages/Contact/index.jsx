@@ -82,6 +82,13 @@ const Content = styled.a`
   }
 `;
 
+const MapContainer = styled.div`
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  margin-top: 20px;
+`;
+
 
 function Contact() 
 {
@@ -125,6 +132,19 @@ function Contact()
               75001 Paris<br />
               France
             </Content>
+
+            <MapContainer>
+              <iframe
+                title="Google Maps"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.990769520288!2d2.2922924156749153!3d48.85884407928709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fddf1f5c8b1%3A0x4220f1fd8b9a04b!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1632821234567!5m2!1sen!2sfr"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+              ></iframe>
+            </MapContainer>
+            
           </ContactInfoSection>
 
         </ContactContainer>
