@@ -29,6 +29,7 @@ const FormContainer = styled.form`
 
 const Input = styled.input`
   padding: 10px;
+  margin-bottom: 8px;
   width: 100%;
   max-width: 400px;
   border: 1px solid ${({ theme }) => (theme === 'light' ? colors.dark : 'white')};
@@ -38,6 +39,7 @@ const Input = styled.input`
 
 const TextArea = styled.textarea`
   padding: 10px;
+  margin-bottom: 8px;
   width: 100%;
   max-width: 400px;
   height: 100px;
