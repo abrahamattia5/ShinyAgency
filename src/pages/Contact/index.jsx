@@ -99,13 +99,13 @@ function Contact()
         <ContactContainer theme={theme}>
           <Title theme={theme}>Contactez-nous</Title>
 
-          <FormContainer theme={theme} onSubmit={handleSubmit}>
+          <ContactInfoSection theme={theme} onSubmit={handleSubmit}>
             <Input theme={theme} type="text" placeholder="Nom" required />
             <Input theme={theme} type="tel" placeholder="Téléphone" required />
             <Input theme={theme} type="email" placeholder="Email" required />
             <TextArea theme={theme} placeholder="Votre message" required />
             <SubmitButton type="submit">Envoyer</SubmitButton>
-          </FormContainer>
+          </ContactInfoSection>
 
 
           <ContactInfoSection theme={theme}>
