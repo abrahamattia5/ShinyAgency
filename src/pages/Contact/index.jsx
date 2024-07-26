@@ -70,11 +70,16 @@ const ContactInfoSection = styled(Section)`
   margin-bottom: 30px;
 `;
 
-const Content = styled.p`
+const Content = styled.a`
   font-size: 16px;
   line-height: 1.6;
   color: ${({ theme }) => (theme === 'light' ? colors.dark : 'white')};
   text-align: center;
+  text-decoration: none;
+  &:hover 
+  {
+    text-decoration: underline;
+  }
 `;
 
 
@@ -104,13 +109,18 @@ function Contact()
 
           <ContactInfoSection theme={theme}>
             <SectionTitle theme={theme}>Téléphone & Email : </SectionTitle>
-            <Content theme={theme}> 📞 01 23 45 67 89</Content>
-            <Content theme={theme}> 📧 contact@agencefictive.com</Content>
+            <Content theme={theme} href="tel:+33123456789" > 📞 01 23 45 67 89</Content>
+            <Content theme={theme}href="mailto:contact@agencefictive.com" > 📧 contact@agencefictive.com</Content>
           </ContactInfoSection>
 
           <ContactInfoSection theme={theme}>
+
             <SectionTitle theme={theme}> Adresse : </SectionTitle>
-            <Content theme={theme}>
+
+            <Content theme={theme} 
+                target="_blank"
+                href="https://www.google.com/maps/search/?api=1&query=55+Rue+Fictive,75001+Paris,France" 
+            >
               55 Rue Fictive<br />
               75001 Paris<br />
               France
